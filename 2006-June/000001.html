@@ -1,0 +1,153 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Traffcounter-cvs] traffcounter traffcounter.pl,1.2,1.3
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/traffcounter-cvs/2006-June/index.html" >
+   <LINK REL="made" HREF="mailto:traffcounter-cvs%40lists.berlios.de?Subject=Re%3A%20%5BTraffcounter-cvs%5D%20traffcounter%20traffcounter.pl%2C1.2%2C1.3&In-Reply-To=%3C200606141621.k5EGLYb32466%40bat.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000000.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Traffcounter-cvs] traffcounter traffcounter.pl,1.2,1.3</H1>
+    <B>alenitchev</B> 
+    <A HREF="mailto:traffcounter-cvs%40lists.berlios.de?Subject=Re%3A%20%5BTraffcounter-cvs%5D%20traffcounter%20traffcounter.pl%2C1.2%2C1.3&In-Reply-To=%3C200606141621.k5EGLYb32466%40bat.berlios.de%3E"
+       TITLE="[Traffcounter-cvs] traffcounter traffcounter.pl,1.2,1.3">nobody at sheep.berlios.de
+       </A><BR>
+    <I>Wed Jun 14 18:21:34 CEST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000000.html">[Traffcounter-cvs] traffcounter traffcounter.pl,1.1.1.1,1.2
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1">[ date ]</a>
+              <a href="thread.html#1">[ thread ]</a>
+              <a href="subject.html#1">[ subject ]</a>
+              <a href="author.html#1">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Update of /cvsroot/traffcounter/traffcounter
+In directory sheep:/tmp/cvs-serv15450
+
+Modified Files:
+	traffcounter.pl 
+Log Message:
+Added:
+ * copyright
+ * options
+
+Index: traffcounter.pl
+===================================================================
+RCS file: /cvsroot/traffcounter/traffcounter/traffcounter.pl,v
+retrieving revision 1.2
+retrieving revision 1.3
+diff -C2 -d -r1.2 -r1.3
+*** traffcounter.pl	14 Jun 2006 09:03:35 -0000	1.2
+--- traffcounter.pl	14 Jun 2006 16:21:31 -0000	1.3
+***************
+*** 1,4 ****
+--- 1,34 ----
+  #!/usr/bin/perl -w
+  #
++ # Copyright (c) 2006 Dmitri A. Alenitchev.  All rights reserved.
++ #
++ # Redistribution and use in source and binary forms, with or without
++ # modification, are permitted provided that the following conditions
++ # are met:
++ # 1. Redistributions of source code must retain the above copyright
++ #    notice, this list of conditions and the following disclaimer.
++ # 2. Redistributions in binary form must reproduce the above copyright
++ #    notice, this list of conditions and the following disclaimer in the
++ #    documentation and/or other materials provided with the distribution.
++ # 3. All advertising materials mentioning features or use of this software
++ #    must display the following acknowledgement:
++ #	This product includes software developed by the University of
++ #	California, Berkeley and its contributors.
++ # 4. Neither the name of the University nor the names of its contributors
++ #    may be used to endorse or promote products derived from this software
++ #    without specific prior written permission.
++ #
++ # THIS SOFTWARE IS PROVIDED BY THE REGENTS AND CONTRIBUTORS ``AS IS'' AND
++ # ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
++ # IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
++ # ARE DISCLAIMED.  IN NO EVENT SHALL THE REGENTS OR CONTRIBUTORS BE LIABLE
++ # FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
++ # DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
++ # OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
++ # HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
++ # LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
++ # OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
++ # SUCH DAMAGE.
++ #
+  ####################
+  # Set this options
+***************
+*** 10,15 ****
+--- 40,64 ----
+  ####################
+  
++ use vars qw/ %opt /;
++ 
+  use Net::SNMP;
+  
++ # Command line options processing
++ sub init()
++ {
++     use Getopt::Std;
++     my $opt_string = 'hvo:';
++     getopts( &quot;$opt_string&quot;, \%opt ) or usage();
++     usage() if $opt{h};
++ }
++ 
++ sub usage()
++ {
++     print &quot;usage: $0 [-hv] [-o file]\n&quot;;
++     exit;
++ }
++ 
++ init();
++ 
+  ($session,$error)=Net::SNMP-&gt;session(Hostname =&gt; $snmp_host,
+  	Community =&gt; $snmp_community);
+***************
+*** 25,29 ****
+--- 74,80 ----
+  $traff_out = $traff_out-&gt;{&quot;$snmp_MIB_out&quot;};
+  
++ print &quot;IN:\t&quot; if $opt{v};
+  print &quot;$traff_in\n&quot;;
++ print &quot;OUT:\t&quot; if $opt{v};
+  print &quot;$traff_out\n&quot;;
+  
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000000.html">[Traffcounter-cvs] traffcounter traffcounter.pl,1.1.1.1,1.2
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1">[ date ]</a>
+              <a href="thread.html#1">[ thread ]</a>
+              <a href="subject.html#1">[ subject ]</a>
+              <a href="author.html#1">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/traffcounter-cvs">More information about the Traffcounter-cvs
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,108 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Traffcounter-cvs] traffcounter traffcounter.pl,1.1.1.1,1.2
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/traffcounter-cvs/2006-June/index.html" >
+   <LINK REL="made" HREF="mailto:traffcounter-cvs%40lists.berlios.de?Subject=Re%3A%20%5BTraffcounter-cvs%5D%20traffcounter%20traffcounter.pl%2C1.1.1.1%2C1.2&In-Reply-To=%3C200606140903.k5E93bb04426%40bat.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="000001.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Traffcounter-cvs] traffcounter traffcounter.pl,1.1.1.1,1.2</H1>
+    <B>alenitchev</B> 
+    <A HREF="mailto:traffcounter-cvs%40lists.berlios.de?Subject=Re%3A%20%5BTraffcounter-cvs%5D%20traffcounter%20traffcounter.pl%2C1.1.1.1%2C1.2&In-Reply-To=%3C200606140903.k5E93bb04426%40bat.berlios.de%3E"
+       TITLE="[Traffcounter-cvs] traffcounter traffcounter.pl,1.1.1.1,1.2">nobody at sheep.berlios.de
+       </A><BR>
+    <I>Wed Jun 14 11:03:37 CEST 2006</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="000001.html">[Traffcounter-cvs] traffcounter traffcounter.pl,1.2,1.3
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#0">[ date ]</a>
+              <a href="thread.html#0">[ thread ]</a>
+              <a href="subject.html#0">[ subject ]</a>
+              <a href="author.html#0">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Update of /cvsroot/traffcounter/traffcounter
+In directory sheep:/tmp/cvs-serv7951
+
+Modified Files:
+	traffcounter.pl 
+Log Message:
+Added comments
+
+Index: traffcounter.pl
+===================================================================
+RCS file: /cvsroot/traffcounter/traffcounter/traffcounter.pl,v
+retrieving revision 1.1.1.1
+retrieving revision 1.2
+diff -C2 -d -r1.1.1.1 -r1.2
+*** traffcounter.pl	14 Jun 2006 08:17:25 -0000	1.1.1.1
+--- traffcounter.pl	14 Jun 2006 09:03:35 -0000	1.2
+***************
+*** 1,15 ****
+  #!/usr/bin/perl -w
+! 
+! $snmp_host = '192.168.21.1';
+! $snmp_community = 'diwo';
+! $snmp_part_MIB = '.1.3.6.1.2.1.2.2.1';
+! $if_num = 1;
+  
+  use Net::SNMP;
+- 
+- #my ($sec,$min,$hour,$mday,$mon,$year,$wday,$yday,$isdst) = localtime time;
+- #$year = $year + 1900;
+- #$mon = $mon + 1;
+- #$unix_time = time;
+  
+  ($session,$error)=Net::SNMP-&gt;session(Hostname =&gt; $snmp_host,
+--- 1,14 ----
+  #!/usr/bin/perl -w
+! #
+! ####################
+! # Set this options
+! ####################
+! $snmp_host = '';
+! $snmp_community = '';
+! $snmp_part_MIB = '.1.3.6.1.2.1.2.2.1'; # This value true for FreeBSD
+! $if_num = 1; # Number of network interface
+! ####################
+  
+  use Net::SNMP;
+  
+  ($session,$error)=Net::SNMP-&gt;session(Hostname =&gt; $snmp_host,
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="000001.html">[Traffcounter-cvs] traffcounter traffcounter.pl,1.2,1.3
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#0">[ date ]</a>
+              <a href="thread.html#0">[ thread ]</a>
+              <a href="subject.html#0">[ subject ]</a>
+              <a href="author.html#0">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/traffcounter-cvs">More information about the Traffcounter-cvs
+mailing list</a><br>
+</body></html>
